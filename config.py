@@ -1,8 +1,8 @@
 import os
 class Config(object):
-	BOT_TOKEN = os.environ.get('BOT_TOKEN')
-	USERNAME = os.environ.get('USERNAME')
-	PASSWORD = os.environ.get('PASSWORD')
+	BOT_TOKEN = os.environ.get('BOT_TOKEN','5968326812:AAFYPwE4A_gch9krM0UNYV95e_z-Rh2ZQTw')
+	USERNAME = os.environ.get('USERNAME','alanwalkervc@gmail.com')
+	PASSWORD = os.environ.get('PASSWORD','20092001@Ss')
 	TEAMSUSERNAME= os.environ.get('TEAMSUSERNAME')
 	TEAMSPASSWORD= os.environ.get('TEAMSPASSWORD')
 	#If above lines wont work then use below and pass credentials
