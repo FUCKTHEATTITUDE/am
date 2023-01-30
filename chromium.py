@@ -83,54 +83,55 @@ def status(update, context):
 	
 def zoom(update, context):
 	logging.info("DOING")
+	
 	try:
-		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
+	    context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 		
-		meetingcode = '3069823402'
-		passcode = 'WARP1d'
+	    meetingcode = '3069823402'
+	    passcode = 'WARP1d'
 
-		url_meet = update.message.text.split()[1]
-		passStr = update.message.text.split()[2]
+	    url_meet = update.message.text.split()[1]
+	    passStr = update.message.text.split()[2]
 
 		
 		
-                browser.get('https://zoom.us/wc/join/'+ url_meet)
+            browser.get('https://zoom.us/wc/join/'+ url_meet)
 			
                 
-	        time.sleep(5)
-		browser.save_screenshot("ss.png")
-		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
-		mid  = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), caption="Test", timeout = 120).message_id
-		os.remove('ss.png')
-		inp = browser.find_element(By.ID, 'inputname')
-                time.sleep(3)
-                inp.send_keys(f"{user}")
-                btn2 = browser.find_element(By.ID, 'joinBtn')
-                btn2.click()
-                time.sleep(2)
-                inp2 = browser.find_element(By.ID, 'inputpasscode')
-                time.sleep(1)
-                inp2.send_keys(passcode)
-                btn3 = browser.find_element(By.ID, 'joinBtn')
-                time.sleep(1)
-                btn3.click()
+	    time.sleep(5)
+            browser.save_screenshot("ss.png")
+	    context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
+	    mid  = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), caption="Test", timeout = 120).message_id
+	    os.remove('ss.png')
+	    inp = browser.find_element(By.ID, 'inputname')
+            time.sleep(3)
+            inp.send_keys(f"{user}")
+            btn2 = browser.find_element(By.ID, 'joinBtn')
+            btn2.click()
+            time.sleep(2)
+            inp2 = browser.find_element(By.ID, 'inputpasscode')
+            time.sleep(1)
+            inp2.send_keys(passcode)
+            btn3 = browser.find_element(By.ID, 'joinBtn')
+            time.sleep(1)
+            btn3.click()
 
 	
 
-		time.sleep(10)
+	     time.sleep(10)
 
-		context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
+	     context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
 
-		browser.save_screenshot("ss.png")
-		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
-		mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
-		os.remove('ss.png')
+	     browser.save_screenshot("ss.png")
+	     context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
+	     mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
+	     os.remove('ss.png')
 
-		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
-		context.bot.send_message(chat_id=update.message.chat_id, text="Attending you lecture. You can chill ")
-		context.bot.send_message(chat_id=update.message.chat_id,text="To exit click /exitmeet ")
-		pause
-		logging.info("STAAAAPH!!")
+	     context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
+	     context.bot.send_message(chat_id=update.message.chat_id, text="Attending you lecture. You can chill ")
+	     context.bot.send_message(chat_id=update.message.chat_id,text="To exit click /exitmeet ")
+	     pause
+	     logging.info("STAAAAPH!!")
 
 	
 	except:
