@@ -27,10 +27,7 @@ fake = [
 'David Asir',]
 for i in range(number):
         fakes = fake[i]
-	try:
-            user = fakes
-        except IndexError:
-            break
+fakes = user
 
 
 
