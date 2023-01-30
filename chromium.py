@@ -530,28 +530,29 @@ def exitteams(update,context):
 	else:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 		context.bot.send_message(chat_id=update.message.chat_id, text="Some error occured!!!retry again.")
-def test():
-    wait_time = 5 * 60
-    workers = []
-    for i in range(1):
-        fakes = fake[i]
-        try:
-            proxy = proxylist[i]
-        except IndexError:
-            proxy = None
-        try:
+
+def main():
+	import os
+        wait_time = sec * 60
+        workers = []
+        for i in range(number):
+          fakes = fake[i]
+          try:
+               proxy = proxylist[i]
+          except IndexError:
+              proxy = None
+          try:
             user = fakes
-        except IndexError:
-            break
+           except IndexError:
+               break
         wk = threading.Thread(target=start, args=(
             f'[Thread{i}]', proxy, user, wait_time))
         workers.append(wk)
-    for wk in workers:
-        wk.start()
-    for wk in workers:
-        wk.join()
-def main():
-	import os
+        for wk in workers:
+            wk.start()
+        for wk in workers:
+            wk.join()
+
 	# PORT = int(os.environ.get('PORT', 8000))
 	dp.add_handler(CommandHandler("start",start))
 	dp.add_handler(CommandHandler("zoom", zoom))
