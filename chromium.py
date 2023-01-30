@@ -86,7 +86,7 @@ def zoom(update, context):
 	try:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 		
-		
+		meetingcode = '3069823402'
 		passcode = 'WARP1d'
 
 		url_meet = update.message.text.split()[1]
@@ -96,7 +96,7 @@ def zoom(update, context):
 		
 
 			
-                browser.get(f'https://zoom.us/wc/join/'+'3069823402')
+                browser.get(f'https://zoom.us/wc/join/'+meetingcode)
 		
 
 		time.sleep(5)
