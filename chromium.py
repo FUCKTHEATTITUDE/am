@@ -118,11 +118,12 @@ def zoom(update, context,user):
 		
 		usernameStr = Config.USERNAME
 		passwordStr = Config.PASSWORD
-		user ='alan'
+		
 		
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
+		user = 'alan'
 	        
 
 		browser.get('https://zoom.us/wc/join/'+ url_meet)
