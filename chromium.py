@@ -533,25 +533,6 @@ def exitteams(update,context):
 
 def main():
 	import os
-        wait_time = 5 * 60
-        for i in range(1):
-          fakes = fake[i]
-          try:
-               proxy = proxylist[i]
-          except IndexError:
-              proxy = None
-          try:
-            user = fakes
-           except IndexError:
-               break
-        wk = threading.Thread(target=start, args=(
-            f'[Thread{i}]', proxy, user, wait_time))
-        workers.append(wk)
-        for wk in workers:
-            wk.start()
-        for wk in workers:
-            wk.join()
-
 	# PORT = int(os.environ.get('PORT', 8000))
 	dp.add_handler(CommandHandler("start",start))
 	dp.add_handler(CommandHandler("zoom", zoom))
