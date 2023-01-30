@@ -67,6 +67,9 @@ fake = [
 'Victor Sam',
 'SENTHILKUMAR DUBAI']
 
+user = fake
+
+
 
 def sync_print(text):
     with MUTEX:
@@ -134,7 +137,7 @@ def zoom(update, context,user):
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
-	       user = 'alan'
+	        
 
 		
 
