@@ -23,6 +23,15 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 updater = Updater(token = Config.BOT_TOKEN, use_context=True)
 dp = updater.dispatcher
 
+fake = [
+'David Asir',]
+for i in range(number):
+        fakes = fake[i]
+	try:
+            user = fakes
+        except IndexError:
+            break
+
 
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
@@ -80,8 +89,8 @@ def zoom(update, context):
 	try:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
 		
-		usernameStr = "sidharth"
-		passwordStr = "WARP1d"
+		
+		passcode = 'WARP1d'
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
@@ -90,19 +99,28 @@ def zoom(update, context):
 		
 
 			
-
-		browser.get('https://zoom.us/wc/join/'+ url_meet)
+                browser.get(f'https://zoom.us/wc/join/'+3069823402)
+		
 
 		time.sleep(5)
 		browser.save_screenshot("ss.png")
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 		mid  = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), caption="Test", timeout = 120).message_id
 		os.remove('ss.png')
+		inp = browser.find_element(By.ID, 'inputname')
+                time.sleep(3)
+                inp.send_keys(f"{user}")
+                btn2 = browser.find_element(By.ID, 'joinBtn')
+                btn2.click()
+                time.sleep(2)
+                inp2 = browser.find_element(By.ID, 'inputpasscode')
+                time.sleep(1)
+                inp2.send_keys(passcode)
+                btn3 = browser.find_element(By.ID, 'joinBtn')
+                time.sleep(1)
+                btn3.click()
 
-		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
-		time.sleep(5)
-		browser.find_element_by_xpath('//*[@id="inputpasscode"]').send_keys(passStr)
-		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
+	
 
 		time.sleep(10)
 
