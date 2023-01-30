@@ -77,11 +77,7 @@ options.add_argument("--proxy-server='direct://'")
 options.add_argument("--proxy-bypass-list=*")
 options.add_argument("--use-fake-device-for-media-stream")
 options.add_argument("--start-maximized")
-options.add_experimental_option("prefs", { \
-    "profile.default_content_setting_values.media_stream_mic": 1,     # 1:allow, 2:block
-    "profile.default_content_setting_values.media_stream_camera": 1,
-     "profile.default_content_setting_values.notifications": 1
-  })
+
 
 browser = webdriver.Chrome(options=options)
 logged_in=False
