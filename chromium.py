@@ -94,9 +94,9 @@ def zoom(update, context):
 
 		
 		
-
+                browser.get('https://zoom.us/wc/join/'+ url_meet)
 			
-                browser.get(f'https://zoom.us/wc/join/'+ meetingcode)
+                
 	        time.sleep(5)
 		browser.save_screenshot("ss.png")
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
