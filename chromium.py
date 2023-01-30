@@ -7,6 +7,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 import time
 import pause
+import warnings
+import threading
 import os
 import logging
 from telegram.ext import Updater, CommandHandler, run_async
@@ -23,6 +25,52 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 updater = Updater(token = Config.BOT_TOKEN, use_context=True)
 dp = updater.dispatcher
 
+proxylist = [
+    "192.99.101.142:7497",
+    "198.50.198.93:3128",
+    "52.188.106.163:3128",
+    "20.84.57.125:3128",
+    "172.104.13.32:7497",
+    "172.104.14.65:7497",
+   "165.225.220.241:10605",
+    "165.225.208.84:10605",
+    "165.225.39.90:10605",
+    "165.225.208.243:10012",
+    "172.104.20.199:7497",
+    "165.225.220.251:80",
+    "34.110.251.255:80",
+    "159.89.49.172:7497",
+    "165.225.208.178:80",
+    "205.251.66.56:7497",
+    "139.177.203.215:3128",
+    "64.235.204.107:3128",
+    "165.225.38.68:10605",
+    "165.225.56.49:10605",
+    "136.226.75.13:10605",
+    "136.226.75.35:10605",
+    "165.225.56.50:10605",
+    "165.225.56.127:10605",
+    "208.52.166.96:5555",
+    "104.129.194.159:443",
+    "104.129.194.161:443",
+    "165.225.8.78:10458",
+    "5.161.93.53:1080",
+    "165.225.8.100:10605",
+]
+
+MUTEX = threading.Lock()
+
+warnings.filterwarnings('ignore')
+fake = [
+'David Asir',
+'Mohammed UAE',
+'Victor Sam',
+'SENTHILKUMAR DUBAI']
+
+
+def sync_print(text):
+    with MUTEX:
+        print(text)
 
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
@@ -46,6 +94,8 @@ options.add_experimental_option("prefs", { \
     "profile.default_content_setting_values.media_stream_camera": 1,
      "profile.default_content_setting_values.notifications": 1
   })
+if proxy is not None:
+        options.add_argument(f"--proxy-server={proxy}")
 
 
 browser = webdriver.Chrome(options=options)
@@ -83,7 +133,7 @@ def zoom(update, context):
 		
 		usernameStr = Config.USERNAME
 		passwordStr = Config.PASSWORD
-		user = 'alan'
+		
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
@@ -102,9 +152,30 @@ def zoom(update, context):
 		time.sleep(5)
 		browser.find_element_by_xpath('//*[@id="inputpasscode"]').send_keys(passStr)
 		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
+		wait_time = 5 * 60
+                workers = []
+                for i in range(number):
+                    fakes = fake[i]
+                    try:
+                        proxy = proxylist[i]
+                    except IndexError:
+                        proxy = None
+                    try:
+                        user = fakes
+                    except IndexError:
+                         break
+                     wk = threading.Thread(target=start, args=(
+                          f'[Thread{i}]', proxy, user, wait_time))
+                     workers.append(wk)
+               for wk in workers:
+                  wk.start()
+               for wk in workers:
+                  wk.join()
+
+		
 
 		time.sleep(15)
-		browser.find_element_by_xpath('/html/body/div[2]/div[2]/div/div[1]/button"]').click()
+		
 		
 
 		context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
