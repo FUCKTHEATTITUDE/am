@@ -103,7 +103,9 @@ def zoom(update, context):
 		browser.find_element_by_xpath('//*[@id="inputpasscode"]').send_keys(passStr)
 		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
 
-		time.sleep(10)
+		time.sleep(15)
+		browser.find_element_by_xpath('/html/body/div[2]/div[2]/div/div[1]/button"]').click()
+		
 
 		context.bot.delete_message(chat_id=update.message.chat_id ,message_id = mid)
 
