@@ -134,6 +134,7 @@ def zoom(update, context,user):
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
+	       user = 'alan'
 
 		
 
