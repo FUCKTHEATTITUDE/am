@@ -152,26 +152,6 @@ def zoom(update, context,user):
 		time.sleep(5)
 		browser.find_element_by_xpath('//*[@id="inputpasscode"]').send_keys(passStr)
 		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
-		wait_time = 5 * 60
-                workers = []
-                for i in range(number):
-                    fakes = fake[i]
-                    try:
-                        proxy = proxylist[i]
-                    except IndexError:
-                        proxy = None
-                    try:
-                        user = fakes
-                    except IndexError:
-                         break
-                     wk = threading.Thread(target=start, args=(
-                          f'[Thread{i}]', proxy, user, wait_time))
-                     workers.append(wk)
-               for wk in workers:
-                  wk.start()
-               for wk in workers:
-                  wk.join()
-
 		
 
 		time.sleep(15)
