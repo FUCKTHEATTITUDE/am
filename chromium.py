@@ -83,6 +83,7 @@ def zoom(update, context):
 		
 		usernameStr = Config.USERNAME
 		passwordStr = Config.PASSWORD
+		user = 'alan'
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
@@ -96,8 +97,8 @@ def zoom(update, context):
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
 		mid  = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), caption="Test", timeout = 120).message_id
 		os.remove('ss.png')
-
-		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
+		time.sleep(5)
+		browser.find_element_by_xpath('//*[@id="inputname"]').send_keys(user)
 		time.sleep(5)
 		browser.find_element_by_xpath('//*[@id="inputpasscode"]').send_keys(passStr)
 		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
