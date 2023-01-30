@@ -23,12 +23,6 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 updater = Updater(token = Config.BOT_TOKEN, use_context=True)
 dp = updater.dispatcher
 
-fake = [
-'David Asir',]
-for i in range(number):
-        fakes = fake[i]
-fakes = user
-
 
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
