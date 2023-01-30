@@ -67,6 +67,7 @@ options.headless = True
 options.add_argument(f'user-agent={user_agent}')
 options.add_experimental_option("detach", True)
 options.add_argument("--window-size=1920,1080")
+options.add_argument("--allow-file-access-from-files")
 options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--use-fake-device-for-media-stream')
