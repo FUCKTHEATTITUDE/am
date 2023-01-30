@@ -23,6 +23,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 updater = Updater(token = Config.BOT_TOKEN, use_context=True)
 dp = updater.dispatcher
 
+wait_time = 5 * 60
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
 options = webdriver.ChromeOptions()
@@ -47,8 +48,6 @@ options.add_experimental_option("prefs", { \
   })
   if proxy is not None:
         options.add_argument(f"--proxy-server={proxy}")
-    driver = webdriver.Chrome(executable_path="./chromedriver", options=options)
-    return driver
 browser = webdriver.Chrome(options=options)
 
 
@@ -79,7 +78,11 @@ def status(update, context):
 	except:
 		context.bot.send_message(chat_id=update.message.chat_id, text="please /restart your bot🤖 to get status")
 	
-def zoom(update, context):
+def zoom(update, context,browser, locator, by, secs=1, condition=EC.element_to_be_clickable):
+    wait = WebDriverWait(browser=browser, timeout=secs)
+    element = wait.until(condition((by, locator)))
+    return element
+
 	logging.info("DOING")
 	try:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
