@@ -533,9 +533,8 @@ def exitteams(update,context):
 
 def main():
 	import os
-        wait_time = sec * 60
-        workers = []
-        for i in range(number):
+        wait_time = 5 * 60
+        for i in range(1):
           fakes = fake[i]
           try:
                proxy = proxylist[i]
