@@ -59,8 +59,6 @@ proxylist = [
 ]
 
 if True:
-  d = DesiredCapabilities.Chrome
-  d['loggingPrefs'] = {'performance': 'ALL'}
 
   user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
   options = webdriver.ChromeOptions()
