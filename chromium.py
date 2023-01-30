@@ -45,8 +45,13 @@ options.add_experimental_option("prefs", { \
     "profile.default_content_setting_values.media_stream_camera": 1,
      "profile.default_content_setting_values.notifications": 1
   })
-
+  if proxy is not None:
+        options.add_argument(f"--proxy-server={proxy}")
+    driver = webdriver.Chrome(executable_path="./chromedriver", options=options)
+    return driver
 browser = webdriver.Chrome(options=options)
+
+
 logged_in=False
 teams_in=False
 
