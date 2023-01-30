@@ -111,7 +111,7 @@ def status(update, context):
 	except:
 		context.bot.send_message(chat_id=update.message.chat_id, text="please /restart your bot🤖 to get status")
 	
-def zoom(update, context,user):
+def zoom(update, context):
 	logging.info("DOING")
 	try:
 		context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
