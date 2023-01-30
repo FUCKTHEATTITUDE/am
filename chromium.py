@@ -64,6 +64,8 @@ def chrome():
 
   user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
   options = webdriver.ChromeOptions()
+  if headless:
+        opt.add_argument("--headless")
   options.headless = True
   options.add_argument(f'user-agent={user_agent}')
   options.add_experimental_option("detach", True)
