@@ -88,21 +88,7 @@ def zoom(update, context):
 		
 		
 
-			if(browser.find_elements_by_xpath('//*[@id="authzenNext"]/div/button/div[2]')):
-				context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.TYPING)
-				context.bot.send_message(chat_id=update.message.chat_id, text="Need Verification. Please Verify")
-				browser.find_element_by_xpath('//*[@id="authzenNext"]/div/button/div[2]').click()
-				time.sleep(5)
-
-				browser.save_screenshot("ss.png")
-				context.bot.send_chat_action(chat_id=update.message.chat_id, action=ChatAction.UPLOAD_PHOTO)
-				mid = context.bot.send_photo(chat_id=update.message.chat_id, photo=open('ss.png', 'rb'), timeout = 120).message_id
-				os.remove('ss.png')
-				time.sleep(20)
-
-			pickle.dump( browser.get_cookies() , open("zoom.pkl","wb"))
-
-			context.bot.send_message(chat_id=update.message.chat_id, text="Logged In!")
+			
 
 		browser.get('https://zoom.us/wc/join/'+ url_meet)
 
