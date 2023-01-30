@@ -83,8 +83,9 @@ if True:
   options.add_argument("--proxy-bypass-list=*")
   options.add_argument("--use-fake-device-for-media-stream")
   options.add_argument("--start-maximized")
+
   browser = webdriver.Chrome(options=options,desired_capabilities=d)
-  return browser
+  
 	
 logged_in=False
 teams_in=False
