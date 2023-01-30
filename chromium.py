@@ -58,33 +58,36 @@ proxylist = [
     "165.225.8.100:10605",
 ]
 
+def chrome():
+  d = DesiredCapabilities.Chrome
+  d['loggingPrefs'] = {'performance': 'ALL'}
 
-
-
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
-options = webdriver.ChromeOptions()
-options.headless = True
-options.add_argument(f'user-agent={user_agent}')
-options.add_experimental_option("detach", True)
-options.add_argument("--window-size=1920,1080")
-options.add_argument("--allow-file-access-from-files")
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument('--use-fake-device-for-media-stream')
-options.add_argument('--use-fake-ui-for-media-stream')
-options.add_argument("--disable-infobars")
-options.add_argument('--ignore-certificate-errors')
-options.add_argument('--allow-running-insecure-content')
-options.add_argument("--disable-extensions")
-options.add_argument("--proxy-server='direct://'")
-options.add_argument("--proxy-bypass-list=*")
-options.add_argument("--use-fake-device-for-media-stream")
-options.add_argument("--start-maximized")
-
-
-browser = webdriver.Chrome(options=options)
+  user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
+  options = webdriver.ChromeOptions()
+  options.headless = True
+  options.add_argument(f'user-agent={user_agent}')
+  options.add_experimental_option("detach", True)
+  options.add_argument("--window-size=1920,1080")
+  options.add_argument("--allow-file-access-from-files")
+  options.add_argument('--no-sandbox')
+  options.add_argument('--disable-dev-shm-usage')
+  options.add_argument('--use-fake-device-for-media-stream')
+  options.add_argument('--use-fake-ui-for-media-stream')
+  options.add_argument("--disable-infobars")
+  options.add_argument('--ignore-certificate-errors')
+  options.add_argument('--allow-running-insecure-content')
+  options.add_argument("--disable-extensions")
+  options.add_argument("--proxy-server='direct://'")
+  options.add_argument("--proxy-bypass-list=*")
+  options.add_argument("--use-fake-device-for-media-stream")
+  options.add_argument("--start-maximized")
+  browser = webdriver.Chrome(options=options,desired_capabilities=d)
+  return browser
+	
 logged_in=False
 teams_in=False
+
+
 
 @run_async
 def restart(update, context):
