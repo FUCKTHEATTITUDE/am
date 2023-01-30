@@ -58,22 +58,7 @@ proxylist = [
     "165.225.8.100:10605",
 ]
 
-MUTEX = threading.Lock()
 
-warnings.filterwarnings('ignore')
-fake = [
-'David Asir',
-'Mohammed UAE',
-'Victor Sam',
-'SENTHILKUMAR DUBAI']
-
-user = fake
-
-
-
-def sync_print(text):
-    with MUTEX:
-        print(text)
 
 
 user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
@@ -137,7 +122,7 @@ def zoom(update, context,user):
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
-	        
+	        user = "alan"
 
 		
 
