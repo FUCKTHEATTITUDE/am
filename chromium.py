@@ -58,7 +58,7 @@ proxylist = [
     "165.225.8.100:10605",
 ]
 
-def chrome():
+if True:
   d = DesiredCapabilities.Chrome
   d['loggingPrefs'] = {'performance': 'ALL'}
 
