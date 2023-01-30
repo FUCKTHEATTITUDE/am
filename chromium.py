@@ -139,9 +139,9 @@ def zoom(update, context):
 		browser.find_element_by_xpath('//*[@id="inputpasscode"]').send_keys(passStr)
 		browser.find_element_by_xpath('//*[@id="joinBtn"]').click()
 		time.sleep(10)
-		browser.find_element_by_xpath("/html/body/div[2]/div[2]/div/div[1]/button").click()
-
+		browser.find_element_by_xpath('//*[@id="preview-audio-control-button"]/svg').click()
 		time.sleep(15)
+		browser.find_element_by_xpath('//*[@id="root"]/div/div[1]/button').click()
 		
 		
 
