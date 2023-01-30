@@ -24,7 +24,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 updater = Updater(token = Config.BOT_TOKEN, use_context=True)
 dp = updater.dispatcher
-
+user = "alan"
 proxylist = [
     "192.99.101.142:7497",
     "198.50.198.93:3128",
@@ -122,9 +122,7 @@ def zoom(update, context,user):
 
 		url_meet = update.message.text.split()[1]
 		passStr = update.message.text.split()[2]
-	        user = "alan"
-
-		
+	        
 
 		browser.get('https://zoom.us/wc/join/'+ url_meet)
 
