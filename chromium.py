@@ -82,7 +82,7 @@ def __init__():
   if proxy is not None:
         options.add_argument(f"--proxy-server={proxy}")
   browser = webdriver.Chrome(options=options)
-  return browser
+  
 
 
 logged_in=False
