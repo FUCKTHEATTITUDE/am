@@ -83,6 +83,7 @@ def __init__():
   browser = webdriver.Chrome(options=options)
   return browser
 
+browser = webdriver.Chrome(options=options)
 logged_in=False
 teams_in=False
 
