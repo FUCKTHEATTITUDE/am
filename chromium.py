@@ -58,8 +58,7 @@ proxylist = [
     "165.225.8.100:10605",
 ]
 
-if True:
-
+def get_driver(proxy):
   user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
   options = webdriver.ChromeOptions()
   options.headless = True
@@ -79,8 +78,11 @@ if True:
   options.add_argument("--proxy-bypass-list=*")
   options.add_argument("--use-fake-device-for-media-stream")
   options.add_argument("--start-maximized")
+  if proxy is not None:
+        options.add_argument(f"--proxy-server={proxy}")
+  browser = webdriver.Chrome(options=options)
+  return browser
 
-browser = webdriver.Chrome(options=options)
 logged_in=False
 teams_in=False
 
