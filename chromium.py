@@ -78,12 +78,13 @@ def __init__():
   options.add_argument("--proxy-bypass-list=*")
   options.add_argument("--use-fake-device-for-media-stream")
   options.add_argument("--start-maximized")
+  browser = webdriver.Chrome(options=options)
   if proxy is not None:
         options.add_argument(f"--proxy-server={proxy}")
   browser = webdriver.Chrome(options=options)
   return browser
 
-browser = webdriver.Chrome(options=options)
+
 logged_in=False
 teams_in=False
 
