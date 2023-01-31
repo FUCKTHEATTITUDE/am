@@ -18,6 +18,7 @@ from os import execl
 from sys import executable
 import pickle
 
+
 #Logger
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
