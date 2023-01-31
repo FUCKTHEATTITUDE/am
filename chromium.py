@@ -57,28 +57,19 @@ proxylist = [
     "5.161.93.53:1080",
     "165.225.8.100:10605",
 ]
-user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
-options = webdriver.ChromeOptions()
-options.headless = True
-options.add_argument(f'user-agent={user_agent}')
-options.add_experimental_option("detach", True)
-options.add_argument("--window-size=1920,1080")
-options.add_argument("--allow-file-access-from-files")
-options.add_argument('--no-sandbox')
-options.add_argument('--disable-dev-shm-usage')
-options.add_argument('--use-fake-device-for-media-stream')
-options.add_argument('--use-fake-ui-for-media-stream')
-options.add_argument("--disable-infobars")
-options.add_argument('--ignore-certificate-errors')
-options.add_argument('--allow-running-insecure-content')
-options.add_argument("--disable-extensions")
-options.add_argument("--proxy-server='direct://'")
-options.add_argument("--proxy-bypass-list=*")
-options.add_argument("--use-fake-device-for-media-stream")
-options.add_argument("--start-maximized")
-browser = webdriver.Chrome(options=options)
-  
 
+options = webdriver.ChromeOptions()
+# options.add_argument("--headless")
+options.add_argument("--disable-infobars")
+options.add_argument("--window-size=1200,800")
+options.add_argument("user-agent='User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36'")
+options.add_experimental_option("prefs", { \
+    "profile.default_content_setting_values.media_stream_mic": 1,     # 1:allow, 2:block
+    "profile.default_content_setting_values.media_stream_camera": 1,
+     "profile.default_content_setting_values.notifications": 1
+  })
+
+browser = webdriver.Chrome(options=options)
 logged_in=False
 teams_in=False
 
