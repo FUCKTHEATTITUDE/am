@@ -1,6 +1,6 @@
 import os
 class Config(object):
-	BOT_TOKEN = os.environ.get('BOT_TOKEN','6083518801:AAHsFzt_uOVq_qOTThU3ElRjcEhRqWfJKBs')
+	BOT_TOKEN = os.environ.get('BOT_TOKEN','5912024718:AAEH4ps9yHW3tLIf54oK8djR_3_Pg6yIUag')
 	USERNAME = os.environ.get('USERNAME','sidharth')
 	PASSWORD = os.environ.get('PASSWORD','WARP1d')
 	TEAMSUSERNAME= os.environ.get('TEAMSUSERNAME')
