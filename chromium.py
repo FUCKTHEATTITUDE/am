@@ -5,6 +5,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import time
 import pause
 import warnings
@@ -64,6 +65,13 @@ if True:
   user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.5414.74 Safari/537.36"
   options = webdriver.ChromeOptions()
   options.headless = True
+  desired_cap = {
+
+		# Configure ChromeOptions to pass fake media stream
+		'chromeOptions': {
+			'args': ["--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream"]
+		}
+	}
   options.add_argument(f'user-agent={user_agent}')
   options.add_experimental_option("detach", True)
   options.add_argument("--window-size=1920,1080")
@@ -81,7 +89,7 @@ if True:
   options.add_argument("--use-fake-device-for-media-stream")
   options.add_argument("--start-maximized")
 
-browser = webdriver.Chrome(options=options)
+browser = webdriver.Chrome(options=options,desired_capabilities = desired_cap)
 logged_in=False
 teams_in=False
 
